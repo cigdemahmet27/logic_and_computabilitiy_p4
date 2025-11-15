@@ -1,13 +1,11 @@
+*~
+*.un~
 
-# ignore object files
 *.o
 
-# ignore executables
 *.exe
 
-# ignore logs
 *.log
 
-# ignore VS Code settings
 .vscode/
 
