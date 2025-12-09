@@ -16,3 +16,37 @@ If solve returns True: Print "SAT" and the final assignment.
 
 If solve returns False: Print "UNSAT" and the trace.
 """
+
+import config
+from src.dpll import DPLLSolver
+
+def main():
+    print(f"Target CNF: {config.INPUT_CNF_FILE}")
+    
+    # Initialize Solver
+    solver = DPLLSolver()
+    
+    # Run
+    success, model = solver.solve()
+    
+    # Final Output
+    print("\n--- FINAL RESULT ---")
+    if success:
+        print("RESULT: SATISFIABLE")
+        print("Model:", model)
+        # Sort keys for pretty printing
+        sorted_vars = sorted(model.keys())
+        print("Assignment:")
+        for var in sorted_vars:
+            val = model[var]
+            print(f"  Var {var}: {val}")
+    else:
+        print("RESULT: UNSATISFIABLE")
+        print("Proof trace written to:", config.MASTER_TRACE_FILE)
+
+if __name__ == "__main__":
+    main()
+
+    
+    
+    
