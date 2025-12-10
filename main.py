@@ -26,6 +26,10 @@ def main():
     # Initialize Solver
     solver = DPLLSolver()
     
+    # Initial Check (DL 0): Run inference engine before starting DPLL
+    solver.io.write_trigger(0, 0)  # Dummy trigger for DL 0
+    solver.run_inference_engine()
+    
     # Run
     success, model = solver.solve()
     
