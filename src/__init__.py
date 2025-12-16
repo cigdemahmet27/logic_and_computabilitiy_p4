@@ -1,6 +1,0 @@
-"""
-Goal: This file tells Python that the src folder is a "package" of modules, allowing you to import them cleanly into main.py. Why: Without this file, Python might not recognize your folder structure, leading to ModuleNotFoundError.
-
-What to write: You can leave this file completely empty, and it will work. However, a "pro" way to use it is to expose your main classes so your imports look cleaner in main.py.
-
-"""

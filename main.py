@@ -42,7 +42,16 @@ def main():
             print(f"  Var {var}: {val}")
     else:
         print("RESULT: UNSATISFIABLE")
-        print("Proof trace written to:", config.MASTER_TRACE_FILE)
+    
+    # Always print the trace file path and content to terminal
+    print("\nTrace written to:", config.MASTER_TRACE_FILE)
+    print("\n--- MASTER TRACE CONTENT ---")
+    try:
+        with open(config.MASTER_TRACE_FILE, "r") as f:
+            trace_content = f.read()
+            print(trace_content)
+    except FileNotFoundError:
+        print("(No trace file found)")
 
 if __name__ == "__main__":
     main()

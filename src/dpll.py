@@ -35,7 +35,10 @@ class DPLLSolver:
         print("--- Starting DPLL Search ---")
         
         # Run logic at Decision Level 0
-        # FIXED: Changed 'decision_level=0' to 'dl=0' to match the function definition below
+        # First, write trigger and run engine to initialize DL 0
+        self.io.write_trigger(0, 0)  # No literal chosen yet at DL 0
+        self.run_inference_engine()
+        
         return self._dpll_recursive(dl=0)
 
     def _dpll_recursive(self, dl):
