@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 1
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL1] DECIDE      L=1   |
+[DL1] SATISFIED         | C1 (1 OR 2) - satisfied by 1
+[DL1] PROPAGATE   L=3   | C2 (-1 OR 3) - unit propagation forces 3=TRUE
+[DL1] SHIFT       L=-3  | C4 propagates to (-3 -> 5)
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | UNASSIGNED
+3    | TRUE
+4    | UNASSIGNED
+5    | UNASSIGNED
+6    | UNASSIGNED

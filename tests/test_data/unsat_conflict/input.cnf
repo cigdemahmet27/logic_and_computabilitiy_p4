@@ -1,8 +1,0 @@
-c This is an UNSAT test case with conflict and backtracking
-c Formula: (1) AND (-1 OR 2) AND (-2)
-c 1 must be TRUE (unit clause), then 2 must be TRUE, but C3 requires -2
-c This forces a conflict demonstrating backtracking
-p cnf 2 3
-1 0
--1 2 0
--2 0

@@ -6,8 +6,7 @@ Usage:
     python run_test.py sat_simple       # Run specific test
     python run_test.py sat_with_backtrack
     python run_test.py sat_4var
-    python run_test.py unsat_conflict
-    python run_test.py unsat_4var_chain
+    python run_test.py sat_6var_deep    # 4+ decision levels test
 """
 import sys
 import os
@@ -22,7 +21,7 @@ else:
     test_name = "sat_4var"
 
 # Available tests
-available_tests = ["sat_simple", "sat_with_backtrack", "sat_4var", "unsat_conflict", "unsat_4var_chain"]
+available_tests = ["sat_simple", "sat_with_backtrack", "sat_4var", "sat_6var_deep"]
 
 if test_name not in available_tests:
     print(f"Unknown test: {test_name}")

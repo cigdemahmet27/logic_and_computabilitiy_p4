@@ -8,6 +8,8 @@ Test Cases:
 1. test_sat_simple: A simple SAT formula that resolves without backtracking
 2. test_unsat_conflict: An UNSAT formula that conflicts immediately at DL 0
 3. test_sat_with_backtrack: A SAT formula that requires backtracking (first branch fails)
+4. test_sat_4var: A 4-variable SAT with 2 decision levels
+5. test_sat_6var_deep: A 6-variable SAT requiring 4+ decision levels (DL0-DL4)
 
 Usage:
     python -m pytest tests/tests_dpll.py -v
@@ -258,6 +260,60 @@ class TestDPLLSolver(unittest.TestCase):
         # According to our mock: 1=FALSE, 3=FALSE
         self.assertEqual(model.get(1), False, "Variable 1 should be FALSE")
         self.assertEqual(model.get(3), False, "Variable 3 should be FALSE")
+        
+        # Verify trace was created
+        self.assertTrue(
+            os.path.exists(config.MASTER_TRACE_FILE),
+            "Master trace file should be created"
+        )
+        print(f"  Trace: {config.MASTER_TRACE_FILE}")
+
+    # =========================================================================
+    # TEST 5: 6-Variable SAT with Deep Decision Levels (4+ DLs)
+    # =========================================================================
+    def test_sat_6var_deep(self):
+        """
+        Test a 6-variable SAT formula requiring 4+ decision levels:
+        C1: (1 OR 2)
+        C2: (-1 OR 3)
+        C3: (-2 OR 4)
+        C4: (-3 OR 5)
+        C5: (-4 OR 6)
+        C6: (-5 OR -6)
+        
+        Expected behavior:
+        - DL 0: All 6 variables unassigned
+        - DL 1: Decide 1=TRUE, propagates 3=TRUE
+        - DL 2: Decide 5=TRUE, propagates 6=FALSE
+        - DL 3: Decide 4=FALSE, satisfies C5
+        - DL 4: Decide 2=FALSE, all clauses SAT!
+        
+        Expected result: SATISFIABLE with 1=TRUE, 2=FALSE, 3=TRUE, 4=FALSE, 5=TRUE, 6=FALSE
+        """
+        print("\n" + "="*60)
+        print("TEST: 6-Variable SAT (4+ Decision Levels)")
+        print("="*60)
+        
+        self._setup_test("sat_6var_deep")
+        
+        solver = DPLLSolver()
+        success, model = solver.solve()
+        
+        # Assertions
+        self.assertTrue(success, "Formula should be SATISFIABLE")
+        self.assertIsNotNone(model, "Model should not be None for SAT")
+        
+        print(f"  Result: SAT")
+        print(f"  Model: {model}")
+        
+        # Verify the model has the expected values
+        # Expected: 1=TRUE, 2=FALSE, 3=TRUE, 4=FALSE, 5=TRUE, 6=FALSE
+        self.assertEqual(model.get(1), True, "Variable 1 should be TRUE")
+        self.assertEqual(model.get(2), False, "Variable 2 should be FALSE")
+        self.assertEqual(model.get(3), True, "Variable 3 should be TRUE")
+        self.assertEqual(model.get(4), False, "Variable 4 should be FALSE")
+        self.assertEqual(model.get(5), True, "Variable 5 should be TRUE")
+        self.assertEqual(model.get(6), False, "Variable 6 should be FALSE")
         
         # Verify trace was created
         self.assertTrue(

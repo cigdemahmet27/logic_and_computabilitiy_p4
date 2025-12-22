@@ -1,0 +1,17 @@
+--- STATUS ---
+STATUS: SAT
+DL: 4
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL4] DECIDE      L=-2  |
+[DL4] SATISFIED         | C3 (-2 OR 4) - satisfied by -2
+[DL4] ALL SATISFIED     | All 6 clauses satisfied
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | FALSE
+3    | TRUE
+4    | FALSE
+5    | TRUE
+6    | FALSE

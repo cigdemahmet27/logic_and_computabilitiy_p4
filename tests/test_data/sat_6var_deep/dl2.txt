@@ -1,0 +1,17 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 2
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL2] DECIDE      L=5   |
+[DL2] SHIFT       L=-5  | C6 propagates to -6
+[DL2] PROPAGATE   L=-6  | C6 (-5 OR -6) - unit propagation forces 6=FALSE
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | UNASSIGNED
+3    | TRUE
+4    | UNASSIGNED
+5    | TRUE
+6    | FALSE
