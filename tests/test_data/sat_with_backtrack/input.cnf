@@ -1,0 +1,8 @@
+c SAT test case that requires backtracking
+c Formula: (-1 OR -2) AND (1 OR 2) AND (2)
+c If we pick 1=TRUE first, then 2 must be TRUE (from C3), but C1 conflicts
+c Backtracking to 1=FALSE resolves with C2 satisfied by 2=TRUE from C3
+p cnf 2 3
+-1 -2 0
+1 2 0
+2 0

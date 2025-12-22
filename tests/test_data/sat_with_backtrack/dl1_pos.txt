@@ -1,0 +1,13 @@
+--- STATUS ---
+STATUS: CONFLICT
+DL: 1
+CONFLICT_ID: C1
+
+--- BCP EXECUTION LOG ---
+[DL1] DECIDE      L=1   |
+[DL1] CONFLICT          | C1 (-1 OR -2) violated: 1=TRUE, 2=TRUE
+[DL1] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | TRUE

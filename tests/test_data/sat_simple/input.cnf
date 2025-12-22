@@ -1,0 +1,7 @@
+c This is a simple SAT test case
+c Formula: (1 OR 2) AND (-1 OR 2) AND (-2 OR 3)
+c SAT with: 1=TRUE, 2=TRUE, 3=TRUE
+p cnf 3 3
+1 2 0
+-1 2 0
+-2 3 0

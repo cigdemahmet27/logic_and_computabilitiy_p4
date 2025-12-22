@@ -1,19 +1,16 @@
 """
-Test Mock Shim for 4-Variable SAT Scenario
+Test Mock Shim for SAT Simple Scenario
 
 This mock simulates:
-- DL 0: All 4 variables unassigned
-- DL 1: Decide -3 (3=FALSE) - satisfies C3
-- DL 2: Decide -1 (1=FALSE) - satisfies C1 and C2, SAT!
-
-Formula: (-1 OR -2 OR 3) AND (-1 OR 2 OR 4) AND (-3 OR -4)
+- DL 0: All variables unassigned
+- DL 1: Deciding literal 2 leads to SAT (unit propagation assigns 3)
 """
 import os
 import shutil
 
 # Paths relative to project root
 DATA_DIR = "data"
-TEST_DATA_DIR = os.path.join("tests", "test_data", "sat_4var")
+TEST_DATA_DIR = os.path.join("tests", "test_data", "sat_simple")
 TRIGGER_FILE = os.path.join(DATA_DIR, "bcp_trigger_input.txt")
 OUTPUT_FILE = os.path.join(DATA_DIR, "bcp_output.txt")
 
@@ -30,7 +27,7 @@ def main():
                     if line.startswith("DL:"):
                         target_dl = int(line.split(":")[1].strip())
         except Exception as e:
-            print(f"[4VAR Shim] Error reading trigger: {e}")
+            print(f"[SAT Shim] Error reading trigger: {e}")
             target_dl = 0
     
     # Map DL to the corresponding mock output file
@@ -38,10 +35,10 @@ def main():
     source_path = os.path.join(TEST_DATA_DIR, source_filename)
 
     if os.path.exists(source_path):
-        print(f"[4VAR Shim] DL {target_dl}: Copying {source_filename} -> bcp_output.txt")
+        print(f"[SAT Shim] DL {target_dl}: Copying {source_filename} -> bcp_output.txt")
         shutil.copy(source_path, OUTPUT_FILE)
     else:
-        print(f"[4VAR Shim] Error: {source_filename} not found in {TEST_DATA_DIR}")
+        print(f"[SAT Shim] Error: {source_filename} not found in {TEST_DATA_DIR}")
         # Create a generic CONFLICT to prevent infinite loops
         with open(OUTPUT_FILE, "w") as f:
             f.write("--- STATUS ---\nSTATUS: CONFLICT\nDL: 99\nCONFLICT_ID: NONE\n")

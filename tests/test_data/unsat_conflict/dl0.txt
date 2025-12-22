@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONFLICT
+DL: 0
+CONFLICT_ID: C3
+
+--- BCP EXECUTION LOG ---
+[DL0] UNIT        L=1   | C1 (1)
+[DL0] ASSIGN      L=1   |
+[DL0] SATISFIED         | C1
+[DL0] UNIT        L=2   | C2 (-1 OR 2)
+[DL0] ASSIGN      L=2   |
+[DL0] SATISFIED         | C2
+[DL0] CONFLICT          | C3 (-2) violated - 2 is TRUE but C3 needs -2
+[DL0] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | TRUE

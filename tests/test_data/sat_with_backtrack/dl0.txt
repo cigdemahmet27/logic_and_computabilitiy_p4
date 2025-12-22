@@ -1,0 +1,14 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 0
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL0] UNIT        L=2   | C3 (2)
+[DL0] ASSIGN      L=2   |
+[DL0] SATISFIED         | C3
+[DL0] SATISFIED         | C2 (1 OR 2)
+
+--- CURRENT VARIABLE STATE ---
+1    | UNASSIGNED
+2    | TRUE
