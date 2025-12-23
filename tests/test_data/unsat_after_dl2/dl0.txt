@@ -1,0 +1,12 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 0
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL0] NO UNIT       | No unit clauses found
+[DL0] CONTINUE      | All variables unassigned
+
+--- CURRENT VARIABLE STATE ---
+1    | UNASSIGNED
+2    | UNASSIGNED

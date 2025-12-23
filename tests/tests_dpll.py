@@ -322,6 +322,99 @@ class TestDPLLSolver(unittest.TestCase):
         )
         print(f"  Trace: {config.MASTER_TRACE_FILE}")
 
+    # =========================================================================
+    # TEST 6: Conflict After DL1 (Conflict not at DL0, requires backtracking)
+    # =========================================================================
+    def test_conflict_after_dl1(self):
+        """
+        Test a formula where CONFLICT occurs after decision at DL1 (not at DL0):
+        C1: (1 OR 2)
+        C2: (-1 OR 3)
+        C3: (-2 OR 3)
+        C4: (-3 OR -1)
+        
+        Expected behavior:
+        - DL 0: No unit clauses, all unassigned, CONTINUE
+        - DL 1: Decide 1=TRUE -> propagates 3=TRUE via C2
+                C4 (-3 OR -1) CONFLICTS since 3=TRUE and 1=TRUE
+                Backtrack, try 1=FALSE -> C2, C4 satisfied
+        - DL 2: Decide 2=TRUE -> C3 propagates 3=TRUE -> SAT
+        
+        Expected result: SATISFIABLE after conflict and backtracking at DL1
+        """
+        print("\n" + "="*60)
+        print("TEST: Conflict After DL1 (Not at DL0)")
+        print("="*60)
+        
+        self._setup_test("conflict_after_dl1")
+        
+        solver = DPLLSolver()
+        success, model = solver.solve()
+        
+        # Assertions
+        self.assertTrue(success, "Formula should be SATISFIABLE after backtracking")
+        self.assertIsNotNone(model, "Model should not be None for SAT")
+        
+        print(f"  Result: SAT (after conflict at DL1 and backtrack)")
+        print(f"  Model: {model}")
+        
+        # Verify the model has the expected values: 1=FALSE, 2=TRUE, 3=TRUE
+        self.assertEqual(model.get(1), False, "Variable 1 should be FALSE")
+        self.assertEqual(model.get(2), True, "Variable 2 should be TRUE")
+        self.assertEqual(model.get(3), True, "Variable 3 should be TRUE")
+        
+        # Verify trace was created
+        self.assertTrue(
+            os.path.exists(config.MASTER_TRACE_FILE),
+            "Master trace file should be created"
+        )
+        print(f"  Trace: {config.MASTER_TRACE_FILE}")
+
+    # =========================================================================
+    # TEST 7: UNSAT After DL2 (UNSAT not at DL0, discovered after exhausting branches)
+    # =========================================================================
+    def test_unsat_after_dl2(self):
+        """
+        Test a formula that is UNSAT but discovery requires exploring branches:
+        C1: (1 OR 2)
+        C2: (-1 OR -2)
+        C3: (1 OR -2)
+        C4: (-1 OR 2)
+        
+        Expected behavior:
+        - DL 0: No unit clauses, all unassigned, CONTINUE
+        - DL 1: Decide 1=TRUE -> C2 forces 2=FALSE
+                C4 (-1 OR 2) CONFLICTS since 1=TRUE and 2=FALSE
+                Backtrack, try 1=FALSE
+        - DL 1: Decide 1=FALSE -> C3 forces 2=FALSE
+                C1 (1 OR 2) CONFLICTS since 1=FALSE and 2=FALSE
+                Both branches exhausted -> UNSAT
+        
+        Expected result: UNSATISFIABLE (discovered after DL1 exploration)
+        """
+        print("\n" + "="*60)
+        print("TEST: UNSAT After DL2 (Not at DL0)")
+        print("="*60)
+        
+        self._setup_test("unsat_after_dl2")
+        
+        solver = DPLLSolver()
+        success, model = solver.solve()
+        
+        # Assertions
+        self.assertFalse(success, "Formula should be UNSATISFIABLE")
+        self.assertIsNone(model, "Model should be None for UNSAT")
+        
+        print(f"  Result: UNSAT (after exploring both branches)")
+        print(f"  Model: {model}")
+        
+        # Verify trace was created
+        self.assertTrue(
+            os.path.exists(config.MASTER_TRACE_FILE),
+            "Master trace file should be created for UNSAT"
+        )
+        print(f"  Trace: {config.MASTER_TRACE_FILE}")
+
 
 class TestMOMHeuristic(unittest.TestCase):
     """Test cases for the MOM Heuristic"""

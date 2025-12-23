@@ -90,8 +90,9 @@ logic_and_computabilitiy_p4/
         ├── sat_simple/         # Simple SAT test
         ├── sat_with_backtrack/ # SAT requiring backtracking
         ├── sat_4var/           # 4-variable SAT
-        ├── unsat_conflict/     # Simple UNSAT
-        └── unsat_4var_chain/   # 4-variable UNSAT chain
+        ├── sat_6var_deep/      # 6-variable SAT (4+ decision levels)
+        ├── conflict_after_dl1/ # Conflict at DL1 with backtracking
+        └── unsat_after_dl2/    # UNSAT discovered after exploring DL1
 ```
 
 ## Usage
@@ -106,8 +107,9 @@ python main.py
 python run_test.py sat_simple          # Simple SAT formula
 python run_test.py sat_with_backtrack  # SAT with backtracking
 python run_test.py sat_4var            # 4-variable SAT (multiple DLs)
-python run_test.py unsat_conflict      # Simple UNSAT
-python run_test.py unsat_4var_chain    # 4-variable UNSAT chain
+python run_test.py sat_6var_deep       # 6-variable SAT (4+ decision levels)
+python run_test.py conflict_after_dl1  # Conflict at DL1 with backtracking
+python run_test.py unsat_after_dl2     # UNSAT discovered after DL1 exploration
 ```
 
 ### Running Unit Tests
@@ -216,8 +218,9 @@ CONFLICT_ID: <clause_id or None>
 | `sat_simple` | 3 | 3 | SAT | Simple satisfiable formula |
 | `sat_with_backtrack` | 2 | 3 | SAT | Requires backtracking |
 | `sat_4var` | 4 | 3 | SAT | Multiple decision levels |
-| `unsat_conflict` | 2 | 3 | UNSAT | Immediate conflict at DL 0 |
-| `unsat_4var_chain` | 4 | 5 | UNSAT | Chain propagation to conflict |
+| `sat_6var_deep` | 6 | 6 | SAT | 4+ decision levels required |
+| `conflict_after_dl1` | 3 | 5 | SAT | **Conflict at DL1**, backtrack to SAT |
+| `unsat_after_dl2` | 2 | 4 | UNSAT | **UNSAT after DL1 exploration** (both branches fail) |
 
 ## Integration with Other Projects
 

@@ -1,2 +1,2 @@
 TRIGGER_LITERAL: -1
-DL: 2
+DL: 1

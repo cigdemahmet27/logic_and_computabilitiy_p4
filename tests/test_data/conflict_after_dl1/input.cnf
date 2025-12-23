@@ -1,0 +1,29 @@
+c Conflict after DL1 test case
+c Formula: (1 OR 2) AND (1 OR 3) AND (-1 OR -2 OR -3)
+c
+c The heuristic will choose 1 (positive) because it appears twice positively
+c DL0: No unit clauses, CONTINUE
+c DL1: Decide 1=TRUE -> C1, C2 satisfied but 2 and 3 still unassigned
+c      Need to pick another variable - heuristic picks 2
+c DL2: Decide 2=TRUE -> C3 (-1 OR -2 OR -3) becomes (-3)
+c      This forces 3=FALSE
+c      But wait we need a conflict...
+c
+c Let's use a simpler formula that guarantees conflict after decision:
+c C1: (1 OR 2)
+c C2: (1 OR 3) 
+c C3: (-1 OR -2)
+c C4: (-1 OR -3)
+c C5: (2 OR 3)
+c
+c If 1=TRUE: C1,C2 satisfied, C3 forces 2=FALSE, C4 forces 3=FALSE
+c           C5 (2 OR 3) becomes (FALSE OR FALSE) = CONFLICT!
+c If 1=FALSE: C1 forces 2=TRUE, C2 forces 3=TRUE, C3,C4 satisfied, C5 satisfied
+c           SAT!
+c
+p cnf 3 5
+1 2 0
+1 3 0
+-1 -2 0
+-1 -3 0
+2 3 0

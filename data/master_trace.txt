@@ -11,56 +11,59 @@ CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\inpu
 --- DECISION LEVEL 0 ---
 ============================================================
 [DL0] BCP_RESULT        | STATUS: CONTINUE
+  [DL0] NO UNIT       | No unit clauses found
+  [DL0] CONTINUE      | All variables unassigned
 
 --- CURRENT VARIABLE STATE ---
      1  | UNASSIGNED
      2  | UNASSIGNED
-     3  | UNASSIGNED
-     4  | UNASSIGNED
 
 ============================================================
 --- DECISION LEVEL 1 ---
 ============================================================
-[DL1] DECIDE      L=  -3  | Var 3 = FALSE
-[DL1] BCP_RESULT        | STATUS: CONTINUE
-  [DL1] DECIDE      L=-3  |
-  [DL1] SATISFIED         | C3 (-3 OR -4) - satisfied by -3
-  [DL1] SHIFT       L=3   | C1 3->(-1 OR -2)
+[DL1] DECIDE      L=   1  | Var 1 = TRUE
+[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C4)
+  [DL1] DECIDE      L=1   | Decided 1=TRUE
+  [DL1] PROPAGATE   L=-2  | C2 (-1 OR -2): 1=TRUE forces -2 (2=FALSE)
+  [DL1] SATISFIED         | C2 satisfied
+  [DL1] SATISFIED         | C3 (1 OR -2) satisfied by 1=TRUE
+  [DL1] CONFLICT          | C4 (-1 OR 2) violated: 1=TRUE, 2=FALSE
+  [DL1] BACKTRACK         |
 
 --- CURRENT VARIABLE STATE ---
-     1  | UNASSIGNED
-     2  | UNASSIGNED
-     3  | FALSE
-     4  | UNASSIGNED
+     1  | TRUE
+     2  | FALSE
 
-============================================================
---- DECISION LEVEL 2 ---
-============================================================
-[DL2] DECIDE      L=  -1  | Var 1 = FALSE
-[DL2] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
-  [DL2] DECIDE      L=-1  |
-  [DL2] SATISFIED         | C1 (-1 OR -2 OR 3) - satisfied by -1
-  [DL2] SATISFIED         | C2 (-1 OR 2 OR 4) - satisfied by -1
-  [DL2] ALL SATISFIED     |
+************************************************************
+*** BACKTRACK at DL 1 ***
+    Failed literal: 1
+    Trying opposite: -1
+************************************************************
+
+[DL1] DECIDE      L=  -1  | Var 1 = FALSE
+[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C1)
+  [DL1] DECIDE      L=-1  | Decided 1=FALSE (after backtrack)
+  [DL1] PROPAGATE   L=-2  | C3 (1 OR -2): 1=FALSE forces -2 (2=FALSE)
+  [DL1] SATISFIED         | C3 satisfied
+  [DL1] SATISFIED         | C2 (-1 OR -2) satisfied by -1
+  [DL1] CONFLICT          | C1 (1 OR 2) violated: 1=FALSE, 2=FALSE
+  [DL1] BACKTRACK         |
 
 --- CURRENT VARIABLE STATE ---
      1  | FALSE
-     2  | UNASSIGNED
-     3  | FALSE
-     4  | UNASSIGNED
+     2  | FALSE
+[DL1] EXHAUSTED         | Both branches failed, propagating failure upward
 
 ================================================================================
                               FINAL RESULT
 ================================================================================
 
-RESULT: SATISFIABLE
+RESULT: UNSATISFIABLE
 
-SATISFYING ASSIGNMENT:
-  Variable 1 = FALSE
-  Variable 3 = FALSE
+No satisfying assignment exists.
 
 STATISTICS:
-  Decisions made: 2
-  Backtracks: 0
+  Decisions made: 1
+  Backtracks: 1
 
 ================================================================================
