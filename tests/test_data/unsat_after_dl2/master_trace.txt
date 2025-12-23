@@ -1,0 +1,70 @@
+================================================================================
+                         MASTER EXECUTION TRACE
+                         DPLL SAT Solver - Project #4
+================================================================================
+
+CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\input.cnf
+----------------------------------------
+
+
+============================================================
+--- DECISION LEVEL 0 ---
+============================================================
+[DL0] BCP_RESULT        | STATUS: CONTINUE
+  [DL0] NO UNIT       | No unit clauses found
+  [DL0] CONTINUE      | All variables unassigned
+
+--- CURRENT VARIABLE STATE ---
+     1  | UNASSIGNED
+     2  | UNASSIGNED
+[HEURISTIC] MOM selected literal 1 (Var 1 = TRUE) | Count: 2 in 4 min-size clauses
+
+============================================================
+--- DECISION LEVEL 1 ---
+============================================================
+[DL1] DECIDE      L=   1  | Var 1 = TRUE
+[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C4)
+  [DL1] DECIDE      L=1   | Decided 1=TRUE
+  [DL1] PROPAGATE   L=-2  | C2 (-1 OR -2): 1=TRUE forces -2 (2=FALSE)
+  [DL1] SATISFIED         | C2 satisfied
+  [DL1] SATISFIED         | C3 (1 OR -2) satisfied by 1=TRUE
+  [DL1] CONFLICT          | C4 (-1 OR 2) violated: 1=TRUE, 2=FALSE
+  [DL1] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+     1  | TRUE
+     2  | FALSE
+
+************************************************************
+*** BACKTRACK at DL 1 ***
+    Failed literal: 1
+    Trying opposite: -1
+************************************************************
+
+[DL1] DECIDE      L=  -1  | Var 1 = FALSE
+[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C1)
+  [DL1] DECIDE      L=-1  | Decided 1=FALSE (after backtrack)
+  [DL1] PROPAGATE   L=-2  | C3 (1 OR -2): 1=FALSE forces -2 (2=FALSE)
+  [DL1] SATISFIED         | C3 satisfied
+  [DL1] SATISFIED         | C2 (-1 OR -2) satisfied by -1
+  [DL1] CONFLICT          | C1 (1 OR 2) violated: 1=FALSE, 2=FALSE
+  [DL1] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+     1  | FALSE
+     2  | FALSE
+[DL1] EXHAUSTED         | Both branches failed, propagating failure upward
+
+================================================================================
+                              FINAL RESULT
+================================================================================
+
+RESULT: UNSATISFIABLE
+
+No satisfying assignment exists.
+
+STATISTICS:
+  Decisions made: 1
+  Backtracks: 1
+
+================================================================================

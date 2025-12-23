@@ -67,3 +67,8 @@ print()
 # Display the master trace
 with open(config.MASTER_TRACE_FILE, 'r') as f:
     print(f.read())
+
+# Copy master trace to the test folder for reference
+test_trace_path = f'{test_data_path}/master_trace.txt'
+shutil.copy(config.MASTER_TRACE_FILE, test_trace_path)
+print(f"  [Saved trace to: {test_trace_path}]")

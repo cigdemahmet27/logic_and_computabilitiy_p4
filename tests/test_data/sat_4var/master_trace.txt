@@ -16,24 +16,40 @@ CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\inpu
      1  | UNASSIGNED
      2  | UNASSIGNED
      3  | UNASSIGNED
-[HEURISTIC] MOM selected literal 2 (Var 2 = TRUE) | Count: 2 in 3 min-size clauses
+     4  | UNASSIGNED
+[HEURISTIC] MOM selected literal -3 (Var 3 = FALSE) | Count: 1 in 1 min-size clauses
 
 ============================================================
 --- DECISION LEVEL 1 ---
 ============================================================
-[DL1] DECIDE      L=   2  | Var 2 = TRUE
-[DL1] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
-  [DL1] DECIDE      L=2   |
-  [DL1] SATISFIED         | C1 (1 OR 2)
-  [DL1] SATISFIED         | C2 (-1 OR 2)
-  [DL1] UNIT        L=3   | C3 (-2 OR 3)
-  [DL1] ASSIGN      L=3   |
-  [DL1] SATISFIED         | C3
+[DL1] DECIDE      L=  -3  | Var 3 = FALSE
+[DL1] BCP_RESULT        | STATUS: CONTINUE
+  [DL1] DECIDE      L=-3  |
+  [DL1] SATISFIED         | C3 (-3 OR -4) - satisfied by -3
+  [DL1] SHIFT       L=3   | C1 3->(-1 OR -2)
 
 --- CURRENT VARIABLE STATE ---
      1  | UNASSIGNED
-     2  | TRUE
-     3  | TRUE
+     2  | UNASSIGNED
+     3  | FALSE
+     4  | UNASSIGNED
+[HEURISTIC] MOM selected literal -1 (Var 1 = FALSE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 2 ---
+============================================================
+[DL2] DECIDE      L=  -1  | Var 1 = FALSE
+[DL2] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
+  [DL2] DECIDE      L=-1  |
+  [DL2] SATISFIED         | C1 (-1 OR -2 OR 3) - satisfied by -1
+  [DL2] SATISFIED         | C2 (-1 OR 2 OR 4) - satisfied by -1
+  [DL2] ALL SATISFIED     |
+
+--- CURRENT VARIABLE STATE ---
+     1  | FALSE
+     2  | UNASSIGNED
+     3  | FALSE
+     4  | UNASSIGNED
 
 ================================================================================
                               FINAL RESULT
@@ -42,11 +58,11 @@ CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\inpu
 RESULT: SATISFIABLE
 
 SATISFYING ASSIGNMENT:
-  Variable 2 = TRUE
-  Variable 3 = TRUE
+  Variable 1 = FALSE
+  Variable 3 = FALSE
 
 STATISTICS:
-  Decisions made: 1
+  Decisions made: 2
   Backtracks: 0
 
 ================================================================================

@@ -1,0 +1,114 @@
+================================================================================
+                         MASTER EXECUTION TRACE
+                         DPLL SAT Solver - Project #4
+================================================================================
+
+CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\input.cnf
+----------------------------------------
+
+
+============================================================
+--- DECISION LEVEL 0 ---
+============================================================
+[DL0] BCP_RESULT        | STATUS: CONTINUE
+
+--- CURRENT VARIABLE STATE ---
+     1  | UNASSIGNED
+     2  | UNASSIGNED
+     3  | UNASSIGNED
+     4  | UNASSIGNED
+     5  | UNASSIGNED
+     6  | UNASSIGNED
+[HEURISTIC] MOM selected literal 1 (Var 1 = TRUE) | Count: 1 in 6 min-size clauses
+
+============================================================
+--- DECISION LEVEL 1 ---
+============================================================
+[DL1] DECIDE      L=   1  | Var 1 = TRUE
+[DL1] BCP_RESULT        | STATUS: CONTINUE
+  [DL1] DECIDE      L=1   |
+  [DL1] SATISFIED         | C1 (1 OR 2) - satisfied by 1
+  [DL1] PROPAGATE   L=3   | C2 (-1 OR 3) - unit propagation forces 3=TRUE
+  [DL1] SHIFT       L=-3  | C4 propagates to (-3 -> 5)
+
+--- CURRENT VARIABLE STATE ---
+     1  | TRUE
+     2  | UNASSIGNED
+     3  | TRUE
+     4  | UNASSIGNED
+     5  | UNASSIGNED
+     6  | UNASSIGNED
+[HEURISTIC] MOM selected literal 5 (Var 5 = TRUE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 2 ---
+============================================================
+[DL2] DECIDE      L=   5  | Var 5 = TRUE
+[DL2] BCP_RESULT        | STATUS: CONTINUE
+  [DL2] DECIDE      L=5   |
+  [DL2] SHIFT       L=-5  | C6 propagates to -6
+  [DL2] PROPAGATE   L=-6  | C6 (-5 OR -6) - unit propagation forces 6=FALSE
+
+--- CURRENT VARIABLE STATE ---
+     1  | TRUE
+     2  | UNASSIGNED
+     3  | TRUE
+     4  | UNASSIGNED
+     5  | TRUE
+     6  | FALSE
+[HEURISTIC] MOM selected literal -4 (Var 4 = FALSE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 3 ---
+============================================================
+[DL3] DECIDE      L=  -4  | Var 4 = FALSE
+[DL3] BCP_RESULT        | STATUS: CONTINUE
+  [DL3] DECIDE      L=-4  |
+  [DL3] SATISFIED         | C3 (-2 OR 4) - still needs 2 or -4
+  [DL3] SATISFIED         | C5 (-4 OR 6) - satisfied by -4
+
+--- CURRENT VARIABLE STATE ---
+     1  | TRUE
+     2  | UNASSIGNED
+     3  | TRUE
+     4  | FALSE
+     5  | TRUE
+     6  | FALSE
+[HEURISTIC] MOM selected literal -2 (Var 2 = FALSE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 4 ---
+============================================================
+[DL4] DECIDE      L=  -2  | Var 2 = FALSE
+[DL4] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
+  [DL4] DECIDE      L=-2  |
+  [DL4] SATISFIED         | C3 (-2 OR 4) - satisfied by -2
+  [DL4] ALL SATISFIED     | All 6 clauses satisfied
+
+--- CURRENT VARIABLE STATE ---
+     1  | TRUE
+     2  | FALSE
+     3  | TRUE
+     4  | FALSE
+     5  | TRUE
+     6  | FALSE
+
+================================================================================
+                              FINAL RESULT
+================================================================================
+
+RESULT: SATISFIABLE
+
+SATISFYING ASSIGNMENT:
+  Variable 1 = TRUE
+  Variable 2 = FALSE
+  Variable 3 = TRUE
+  Variable 4 = FALSE
+  Variable 5 = TRUE
+  Variable 6 = FALSE
+
+STATISTICS:
+  Decisions made: 4
+  Backtracks: 0
+
+================================================================================

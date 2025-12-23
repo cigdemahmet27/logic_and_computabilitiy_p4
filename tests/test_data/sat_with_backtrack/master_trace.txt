@@ -1,1 +1,51 @@
+================================================================================
+                         MASTER EXECUTION TRACE
+                         DPLL SAT Solver - Project #4
+================================================================================
 
+CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\input.cnf
+----------------------------------------
+
+
+============================================================
+--- DECISION LEVEL 0 ---
+============================================================
+[DL0] BCP_RESULT        | STATUS: CONTINUE
+  [DL0] UNIT        L=2   | C3 (2)
+  [DL0] ASSIGN      L=2   |
+  [DL0] SATISFIED         | C3
+  [DL0] SATISFIED         | C2 (1 OR 2)
+
+--- CURRENT VARIABLE STATE ---
+     1  | UNASSIGNED
+     2  | TRUE
+[HEURISTIC] MOM selected literal -1 (Var 1 = FALSE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 1 ---
+============================================================
+[DL1] DECIDE      L=  -1  | Var 1 = FALSE
+[DL1] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
+  [DL1] DECIDE      L=-1  |
+  [DL1] SATISFIED         | C1 (-1 OR -2) - satisfied by -1
+  [DL1] ALL SATISFIED     |
+
+--- CURRENT VARIABLE STATE ---
+     1  | FALSE
+     2  | TRUE
+
+================================================================================
+                              FINAL RESULT
+================================================================================
+
+RESULT: SATISFIABLE
+
+SATISFYING ASSIGNMENT:
+  Variable 1 = FALSE
+  Variable 2 = TRUE
+
+STATISTICS:
+  Decisions made: 1
+  Backtracks: 0
+
+================================================================================
