@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 2
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL2] DECIDE      L=-6  | Decided 6=FALSE (after backtrack)
+[DL2] SATISFIED         | C6 (-4 OR -6) satisfied by -6
+[DL2] SATISFIED         | C7 (-5 OR -6) satisfied by -6
+[DL2] CONTINUE          | Need more decisions
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | UNASSIGNED
+3    | UNASSIGNED
+4    | TRUE
+5    | UNASSIGNED
+6    | FALSE

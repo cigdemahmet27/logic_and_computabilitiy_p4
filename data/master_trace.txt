@@ -12,58 +12,145 @@ CNF File: C:\Users\cigde\OneDrive\Masaüstü\logic_and_computabilitiy_p4\data\inpu
 ============================================================
 [DL0] BCP_RESULT        | STATUS: CONTINUE
   [DL0] NO UNIT       | No unit clauses found
-  [DL0] CONTINUE      | All variables unassigned
+  [DL0] CONTINUE      | All 6 variables unassigned
 
 --- CURRENT VARIABLE STATE ---
      1  | UNASSIGNED
      2  | UNASSIGNED
+     3  | UNASSIGNED
+     4  | UNASSIGNED
+     5  | UNASSIGNED
+     6  | UNASSIGNED
+[HEURISTIC] MOM selected literal -2 (Var 2 = FALSE) | Count: 2 in 7 min-size clauses
 
 ============================================================
 --- DECISION LEVEL 1 ---
 ============================================================
-[DL1] DECIDE      L=   1  | Var 1 = TRUE
-[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C4)
-  [DL1] DECIDE      L=1   | Decided 1=TRUE
-  [DL1] PROPAGATE   L=-2  | C2 (-1 OR -2): 1=TRUE forces -2 (2=FALSE)
-  [DL1] SATISFIED         | C2 satisfied
-  [DL1] SATISFIED         | C3 (1 OR -2) satisfied by 1=TRUE
-  [DL1] CONFLICT          | C4 (-1 OR 2) violated: 1=TRUE, 2=FALSE
-  [DL1] BACKTRACK         |
+[DL1] DECIDE      L=  -2  | Var 2 = FALSE
+[DL1] BCP_RESULT        | STATUS: CONTINUE
+  [DL1] DECIDE      L=-2  | Decided Var 2 = FALSE
+  [DL1] SATISFIED         | C8 (1 OR -2)
+  [DL1] CONTINUE          | Need more decisions
 
 --- CURRENT VARIABLE STATE ---
-     1  | TRUE
+     1  | UNASSIGNED
      2  | FALSE
+     3  | UNASSIGNED
+     4  | UNASSIGNED
+     5  | UNASSIGNED
+     6  | UNASSIGNED
+[HEURISTIC] MOM selected literal 6 (Var 6 = TRUE) | Count: 3 in 8 min-size clauses
 
-************************************************************
-*** BACKTRACK at DL 1 ***
-    Failed literal: 1
-    Trying opposite: -1
-************************************************************
+============================================================
+--- DECISION LEVEL 2 ---
+============================================================
+[DL2] DECIDE      L=   6  | Var 6 = TRUE
+[DL2] BCP_RESULT        | STATUS: CONTINUE
+  [DL2] DECIDE      L=6  | Decided Var 6 = TRUE
+  [DL2] SATISFIED         | C8 (1 OR -2)
+  [DL2] CONTINUE          | Need more decisions
 
-[DL1] DECIDE      L=  -1  | Var 1 = FALSE
-[DL1] BCP_RESULT        | STATUS: CONFLICT (Clause: C1)
-  [DL1] DECIDE      L=-1  | Decided 1=FALSE (after backtrack)
-  [DL1] PROPAGATE   L=-2  | C3 (1 OR -2): 1=FALSE forces -2 (2=FALSE)
-  [DL1] SATISFIED         | C3 satisfied
-  [DL1] SATISFIED         | C2 (-1 OR -2) satisfied by -1
-  [DL1] CONFLICT          | C1 (1 OR 2) violated: 1=FALSE, 2=FALSE
-  [DL1] BACKTRACK         |
+--- CURRENT VARIABLE STATE ---
+     1  | UNASSIGNED
+     2  | FALSE
+     3  | UNASSIGNED
+     4  | UNASSIGNED
+     5  | UNASSIGNED
+     6  | TRUE
+[HEURISTIC] MOM selected literal -4 (Var 4 = FALSE) | Count: 1 in 2 min-size clauses
+
+============================================================
+--- DECISION LEVEL 3 ---
+============================================================
+[DL3] DECIDE      L=  -4  | Var 4 = FALSE
+[DL3] BCP_RESULT        | STATUS: CONTINUE
+  [DL3] DECIDE      L=-4  | Decided Var 4 = FALSE
+  [DL3] SATISFIED         | C8 (1 OR -2)
+  [DL3] CONTINUE          | Need more decisions
+
+--- CURRENT VARIABLE STATE ---
+     1  | UNASSIGNED
+     2  | FALSE
+     3  | UNASSIGNED
+     4  | FALSE
+     5  | UNASSIGNED
+     6  | TRUE
+[HEURISTIC] MOM selected literal -1 (Var 1 = FALSE) | Count: 1 in 2 min-size clauses
+
+============================================================
+--- DECISION LEVEL 4 ---
+============================================================
+[DL4] DECIDE      L=  -1  | Var 1 = FALSE
+[DL4] BCP_RESULT        | STATUS: CONTINUE
+  [DL4] DECIDE      L=-1  | Decided Var 1 = FALSE
+  [DL4] SATISFIED         | C2 (-1 OR 4)
+  [DL4] SATISFIED         | C8 (1 OR -2)
+  [DL4] CONTINUE          | Need more decisions
 
 --- CURRENT VARIABLE STATE ---
      1  | FALSE
      2  | FALSE
-[DL1] EXHAUSTED         | Both branches failed, propagating failure upward
+     3  | UNASSIGNED
+     4  | FALSE
+     5  | UNASSIGNED
+     6  | TRUE
+[HEURISTIC] MOM selected literal 3 (Var 3 = TRUE) | Count: 1 in 2 min-size clauses
+
+============================================================
+--- DECISION LEVEL 5 ---
+============================================================
+[DL5] DECIDE      L=   3  | Var 3 = TRUE
+[DL5] BCP_RESULT        | STATUS: CONTINUE
+  [DL5] DECIDE      L=3  | Decided Var 3 = TRUE
+  [DL5] SATISFIED         | C1 (1 OR 2 OR 3)
+  [DL5] SATISFIED         | C2 (-1 OR 4)
+  [DL5] SATISFIED         | C8 (1 OR -2)
+  [DL5] CONTINUE          | Need more decisions
+
+--- CURRENT VARIABLE STATE ---
+     1  | FALSE
+     2  | FALSE
+     3  | TRUE
+     4  | FALSE
+     5  | UNASSIGNED
+     6  | TRUE
+[HEURISTIC] MOM selected literal -5 (Var 5 = FALSE) | Count: 1 in 1 min-size clauses
+
+============================================================
+--- DECISION LEVEL 6 ---
+============================================================
+[DL6] DECIDE      L=  -5  | Var 5 = FALSE
+[DL6] BCP_RESULT        | STATUS: SAT - All clauses satisfied!
+  [DL6] DECIDE      L=-5  | Decided Var 5 = FALSE
+  [DL6] SATISFIED         | C1 (1 OR 2 OR 3)
+  [DL6] SATISFIED         | C2 (-1 OR 4)
+  [DL6] SATISFIED         | C8 (1 OR -2)
+  [DL6] ALL SATISFIED     | All clauses satisfied!
+
+--- CURRENT VARIABLE STATE ---
+     1  | FALSE
+     2  | FALSE
+     3  | TRUE
+     4  | FALSE
+     5  | FALSE
+     6  | TRUE
 
 ================================================================================
                               FINAL RESULT
 ================================================================================
 
-RESULT: UNSATISFIABLE
+RESULT: SATISFIABLE
 
-No satisfying assignment exists.
+SATISFYING ASSIGNMENT:
+  Variable 1 = FALSE
+  Variable 2 = FALSE
+  Variable 3 = TRUE
+  Variable 4 = FALSE
+  Variable 5 = FALSE
+  Variable 6 = TRUE
 
 STATISTICS:
-  Decisions made: 1
-  Backtracks: 1
+  Decisions made: 6
+  Backtracks: 0
 
 ================================================================================

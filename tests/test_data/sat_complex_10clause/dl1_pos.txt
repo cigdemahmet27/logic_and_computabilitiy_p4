@@ -1,0 +1,21 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 1
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL1] DECIDE      L=1   | Decided 1=TRUE
+[DL1] SATISFIED         | C1 (1 OR 2 OR 3) satisfied by 1=TRUE
+[DL1] SATISFIED         | C8 (1 OR -2) satisfied by 1=TRUE
+[DL1] PROPAGATE   L=4   | C2 (-1 OR 4): 1=TRUE forces 4=TRUE
+[DL1] SATISFIED         | C2 satisfied
+[DL1] SATISFIED         | C10 (3 OR 4 OR 5) satisfied by 4=TRUE
+[DL1] CONTINUE          | Need more decisions
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | UNASSIGNED
+3    | UNASSIGNED
+4    | TRUE
+5    | UNASSIGNED
+6    | UNASSIGNED

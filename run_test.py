@@ -21,7 +21,7 @@ else:
     test_name = "sat_4var"
 
 # Available tests
-available_tests = ["sat_simple", "sat_with_backtrack", "sat_4var", "sat_6var_deep", "conflict_after_dl1", "unsat_after_dl2"]
+available_tests = ["sat_simple", "sat_with_backtrack", "sat_4var", "sat_6var_deep", "conflict_after_dl1", "unsat_after_dl2", "sat_complex_10clause"]
 
 if test_name not in available_tests:
     print(f"Unknown test: {test_name}")

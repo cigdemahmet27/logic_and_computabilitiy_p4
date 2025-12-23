@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONFLICT
+DL: 3
+CONFLICT_ID: C9
+
+--- BCP EXECUTION LOG ---
+[DL3] DECIDE      L=-2  | Decided 2=FALSE
+[DL3] PROPAGATE   L=-5  | C3 (-2 OR 5): 2=FALSE, no propagation needed
+[DL3] CONFLICT          | C9 (-1 OR 2 OR 6) violated: 1=TRUE, 2=FALSE, 6=FALSE
+[DL3] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | FALSE
+3    | UNASSIGNED
+4    | TRUE
+5    | UNASSIGNED
+6    | FALSE

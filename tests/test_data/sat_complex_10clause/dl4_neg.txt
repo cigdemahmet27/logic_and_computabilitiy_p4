@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONTINUE
+DL: 4
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL4] DECIDE      L=-3  | Decided 3=FALSE
+[DL4] SATISFIED         | C4 (-3 OR 6) satisfied by -3
+[DL4] SATISFIED         | C11 (-3 OR -4 OR 5) satisfied by -3
+[DL4] CONTINUE          | Need more decisions
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | UNASSIGNED
+3    | FALSE
+4    | TRUE
+5    | UNASSIGNED
+6    | FALSE

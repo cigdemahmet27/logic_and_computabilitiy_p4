@@ -1,0 +1,23 @@
+--- STATUS ---
+STATUS: SAT
+DL: 6
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL6] DECIDE      L=-5  | Decided 5=FALSE
+[DL6] SATISFIED         | C5 (-4 OR -5) satisfied by -5
+[DL6] SATISFIED         | C7 (-5 OR -6) satisfied by -5
+[DL6] SATISFIED         | C12 (2 OR -5 OR 6) satisfied by -5
+[DL6] PROPAGATE   L=6   | C9 (-1 OR 2 OR 6): 1=TRUE, 2=FALSE, forces 6=TRUE
+[DL6] SATISFIED         | C9 satisfied by 6=TRUE
+[DL6] SATISFIED         | C4 (-3 OR 6) satisfied by 6=TRUE
+[DL6] CONFLICT          | C6 (-4 OR -6) violated: 4=TRUE, 6=TRUE
+[DL6] BACKTRACK         |
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | FALSE
+3    | FALSE
+4    | TRUE
+5    | FALSE
+6    | TRUE

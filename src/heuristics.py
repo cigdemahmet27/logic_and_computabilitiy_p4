@@ -120,4 +120,11 @@ class MOMHeuristic:
         # Return the literal (with polarity) that appears most often
         # This ensures we pick the polarity that satisfies more clauses
         best_literal = max(literal_counts, key=literal_counts.get)
+        
+        # Log the heuristic selection to master trace
+        var = abs(best_literal)
+        polarity = "TRUE" if best_literal > 0 else "FALSE"
+        with open(config.MASTER_TRACE_FILE, "a") as f:
+            f.write(f"[HEURISTIC] MOM selected literal {best_literal} (Var {var} = {polarity}) | Count: {literal_counts[best_literal]} in {len(target_clauses)} min-size clauses\n")
+        
         return best_literal

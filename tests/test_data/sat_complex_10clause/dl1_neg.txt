@@ -1,0 +1,18 @@
+--- STATUS ---
+STATUS: CONFLICT
+DL: 1
+CONFLICT_ID: C2
+
+--- BCP EXECUTION LOG ---
+[DL1] DECIDE      L=-1  | Decided 1=FALSE (after backtrack from DL1 exhaustion)
+[DL1] PROPAGATE   L=2   | C8 (1 OR -2): 1=FALSE, -2 not forced, checking others
+[DL1] PROPAGATE   L=3   | C1 (1 OR 2 OR 3): checking...
+[DL1] CONTINUE          | Multiple options still open
+
+--- CURRENT VARIABLE STATE ---
+1    | FALSE
+2    | UNASSIGNED
+3    | UNASSIGNED
+4    | UNASSIGNED
+5    | UNASSIGNED
+6    | UNASSIGNED

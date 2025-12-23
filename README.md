@@ -221,6 +221,7 @@ CONFLICT_ID: <clause_id or None>
 | `sat_6var_deep` | 6 | 6 | SAT | 4+ decision levels required |
 | `conflict_after_dl1` | 3 | 5 | SAT | **Conflict at DL1**, backtrack to SAT |
 | `unsat_after_dl2` | 2 | 4 | UNSAT | **UNSAT after DL1 exploration** (both branches fail) |
+| `sat_complex_10clause` | 6 | 12 | SAT | **Complex: 12 clauses, multiple conflicts & backtracks** |
 
 ## Integration with Other Projects
 

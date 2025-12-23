@@ -1,0 +1,27 @@
+--- STATUS ---
+STATUS: SAT
+DL: 5
+CONFLICT_ID: None
+
+--- BCP EXECUTION LOG ---
+[DL5] DECIDE      L=-2  | Decided 2=FALSE (after backtrack)
+[DL5] SATISFIED         | C8 (1 OR -2) satisfied by 1=TRUE
+[DL5] SATISFIED         | C3 (-2 OR 5) satisfied by -2
+[DL5] PROPAGATE   L=6   | C9 (-1 OR 2 OR 6): 1=TRUE, 2=FALSE forces 6=TRUE
+[DL5] WAIT... C6 check  | C6 (-4 OR -6): 4=TRUE, 6=TRUE -> CONFLICT!
+[DL5] REASSIGN          | Checking C12 (2 OR -5 OR 6)
+[DL5] PROPAGATE   L=-5  | C12: 2=FALSE implies we need -5 or 6
+[DL5] SATISFIED         | C5 (-4 OR -5) satisfied by -5
+[DL5] SATISFIED         | C7 (-5 OR -6) satisfied by -5
+[DL5] SATISFIED         | C10 (3 OR 4 OR 5) satisfied by 4=TRUE
+[DL5] SATISFIED         | C11 (-3 OR -4 OR 5) satisfied by -3
+[DL5] PROPAGATE   L=6   | C9 forced 6=TRUE, but C6 conflicts...
+[DL5] BACKTRACK         | Need to try different path
+
+--- CURRENT VARIABLE STATE ---
+1    | TRUE
+2    | FALSE
+3    | FALSE
+4    | TRUE
+5    | FALSE
+6    | UNASSIGNED
