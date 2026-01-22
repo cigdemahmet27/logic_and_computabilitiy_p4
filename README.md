@@ -18,17 +18,17 @@ The DPLL algorithm is a complete, backtracking-based search algorithm for decidi
 │                        DPLL Algorithm                           │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  1. Run BCP (Call Inference Engine)                            │
+│  1. Run BCP (Call Inference Engine)                             │
 │            │                                                    │
 │            ▼                                                    │
 │  2. Check Status                                                │
-│     ┌──────┼──────┐                                            │
-│     │      │      │                                            │
+│     ┌──────┼──────┐                                             │
+│     │      │      │                                             │
 │    SAT  CONFLICT  CONTINUE                                      │
-│     │      │      │                                            │
-│     ▼      ▼      ▼                                            │
-│  Return  Backtrack  3. Make Decision (MOM Heuristic)           │
-│  Success  (Fail)       │                                       │
+│     │      │      │                                             │
+│     ▼      ▼      ▼                                             │
+│  Return  Backtrack  3. Make Decision (MOM Heuristic)            │
+│  Success  (Fail)       │                                        │
 │                        ▼                                        │
 │                   4. Recurse with chosen literal                │
 │                        │                                        │
